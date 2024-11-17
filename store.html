@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>习成智伴商城</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background-color: #1a1a1a;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header styles */
+        .top-banner {
+            background-color: #0066cc;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+        }
+        header {
+            background-color: #232323;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #0066cc;
+        }
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-icons a {
+            color: #fff;
+        }
+
+        /* Hero section styles */
+        .hero {
+            background: linear-gradient(to right, #000046, #1CB5E0);
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #0066cc;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #0052a3;
+        }
+        .hero-image {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 50%;
+            height: auto;
+        }
+
+        /* Product categories styles */
+        .categories {
+            background-color: #232323;
+            padding: 4rem 0;
+        }
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+        }
+        .category-item {
+            text-align: center;
+        }
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #333;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* New products section styles */
+        .new-products {
+            padding: 4rem 0;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .product-card {
+            background-color: #232323;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-info {
+            padding: 1rem;
+        }
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .product-price {
+            font-weight: bold;
+            color: #0066cc;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #232323;
+            color: #999;
+            padding: 4rem 0 2rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .footer-section h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-links, .nav-icons {
+                display: none;
+            }
+            .hero-image {
+                display: none;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-banner">
+        限时优惠：新品教育机器人享受6期免息付款 <a href="#" style="text-decoration: underline;">立即购买 ></a>
+    </div>
+
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">习成智伴商城</a>
+            <div class="nav-links">
+                <a href="#">智能学习助手</a>
+                <a href="#">教育机器人</a>
+                <a href="#">配件商城</a>
+            </div>
+            <div class="nav-icons">
+                <a href="#" id="search-toggle">🔍</a>
+                <a href="#">🛒</a>
+                <a href="#">👤</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <span style="display: inline-block; background-color: #0066cc; color: white; padding: 5px 10px; border-radius: 20px; font-size: 14px; margin-bottom: 1rem;">习成智伴 黑五特惠</span>
+                    <h1>限时优惠<br>高达52%折扣</h1>
+                    <p>购买新品AI学习助手Pro即赠送3个月会员服务</p>
+                    <a href="#" class="btn">立即购买</a>
+                </div>
+            </div>
+            <img src="/placeholder.svg?height=400&width=600" alt="Product showcase" class="hero-image">
+        </section>
+
+        <section class="categories">
+            <div class="container">
+                <div class="category-grid">
+                    <a href="#" class="category-item">
+                        <div class="category-icon">
+                            <img src="/placeholder.svg?height=40&width=40" alt="AI学习助手" width="40" height="40">
+                        </div>
+                        <span>AI学习助手</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <div class="category-icon">
+                            <img src="/placeholder.svg?height=40&width=40" alt="教育机器人" width="40" height="40">
+                        </div>
+                        <span>教育机器人</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <div class="category-icon">
+                            <img src="/placeholder.svg?height=40&width=40" alt="智慧课堂" width="40" height="40">
+                        </div>
+                        <span>智慧课堂</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <div class="category-icon">
+                            <img src="/placeholder.svg?height=40&width=40" alt="学习平板" width="40" height="40">
+                        </div>
+                        <span>学习平板</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <div class="category-icon">
+                            <img src="/placeholder.svg?height=40&width=40" alt="配件商城" width="40" height="40">
+                        </div>
+                        <span>配件商城</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <div class="category-icon">
+                            <img src="/placeholder.svg?height=40&width=40" alt="教育服务" width="40" height="40">
+                        </div>
+                        <span>教育服务</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="new-products">
+            <div class="container">
+                <h2 style="font-size: 2rem; margin-bottom: 2rem;">新品上市</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="/placeholder.svg?height=200&width=300" alt="AI学习助手 Pro" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">AI学习助手 Pro</h3>
+                            <p style="color: #999; margin-bottom: 1rem;">全新升级的AI算法，更智能的学习体验</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span class="product-price">¥2,999</span>
+                                <a href="#" class="btn" style="font-size: 14px; padding: 5px 10px;">了解更多</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/placeholder.svg?height=200&width=300" alt="智慧课堂系统" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">智慧课堂系统</h3>
+                            <p style="color: #999; margin-bottom: 1rem;">打造互动式学习环境，提升课堂效率</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span class="product-price">¥9,999</span>
+                                <a href="#" class="btn" style="font-size: 14px; padding: 5px 10px;">了解更多</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/placeholder.svg?height=200&width=300" alt="教育机器人 Mini" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">教育机器人 Mini</h3>
+                            <p style="color: #999; margin-bottom: 1rem;">小巧便携，智能陪伴，激发学习兴趣</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span class="product-price">¥1,999</span>
+                                <a href="#" class="btn" style="font-size: 14px; padding: 5px 10px;">了解更多</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>购物指南</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">支付方式</a></li>
+                        <li><a href="#">配送说明</a></li>
+                        <li><a href="#">购物保障</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>服务支持</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">售后政策</a></li>
+                        <li><a href="#">自助服务</a></li>
+                        <li><a href="#">技术支持</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>关于我们</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">公司介绍</a></li>
+                        <li><a href="#">新闻中心</a></li>
+                        <li><a href="#">加入我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>关注我们</h3>
+                    <img src="/placeholder.svg?height=100&width=100" alt="微信二维码" style="width: 100px; height: 100px; margin-top: 10px;">
+                    <p style="margin-top: 10px; font-size: 14px;">扫码关注公众号</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 习成智伴科技有限公司 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 响应式导航菜单
+        const searchToggle = document.getElementById('search-toggle');
+        const header = document.querySelector('header');
+
+        searchToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            const searchBar = document.createElement('div');
+            searchBar.innerHTML = `
+                <div style="padding: 10px 0; background-color: #333;">
+                    <div class="container">
+                        <input type="search" placeholder="搜索产品..." style="width: 100%; padding: 10px; border: none; border-radius: 5px;">
+                    </div>
+                </div>
+            `;
+            header.appendChild(searchBar);
+        });
+
+        // 滚动时改变导航栏样式
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 0);
+        });
+    </script>
+</body>
+</html>
