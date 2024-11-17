@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>习成智伴 - 智启未来教育</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+        header.scrolled {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0066cc;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: #333;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #0066cc;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0066cc;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #0052a3;
+        }
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero section styles */
+        .hero {
+            height: 100vh;
+            background-image: url('https://img3.wallspic.com/crops/8/1/1/7/7/177118/177118-dong_hua_pian-lan_guang_guang_pan-tao-dvd-fa_xing-3840x2160.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            max-width: 600px;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* Products section styles */
+        .products {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        .product-info {
+            padding: 20px;
+        }
+        .product-info h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Features section styles */
+        .features {
+            padding: 80px 0;
+            background-color: #f4f4f4;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .feature-icon {
+            font-size: 2rem;
+            color: #0066cc;
+            margin-bottom: 20px;
+        }
+
+        /* News section styles */
+        .news {
+            padding: 80px 0;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .news-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .news-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        .news-info {
+            padding: 20px;
+        }
+        .news-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        /* Contact section styles */
+        .contact {
+            padding: 80px 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .qr-codes {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .qr-code {
+            text-align: center;
+        }
+        .qr-code img {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 10px;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 60px 0 20px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-section h3 {
+            color: #0066cc;
+            margin-bottom: 20px;
+        }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: #fff;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-links, .nav-buttons {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .mobile-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                padding: 20px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                display: none;
+            }
+            .mobile-menu.active {
+                display: block;
+            }
+            .mobile-menu a {
+                display: block;
+                padding: 10px 0;
+                border-bottom: 1px solid #eee;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">习成智伴</a>
+            <ul class="nav-links">
+                <li><a href="#products">教育产品</a></li>
+                <li><a href="#features">解决方案</a></li>
+                <li><a href="#news">新闻动态</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="store.html" class="btn">商城</a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <div class="mobile-menu">
+        <a href="#products">教育产品</a>
+        <a href="#features">解决方案</a>
+        <a href="#news">新闻动态</a>
+        <a href="#contact">联系我们</a>
+        <a href="store.html" class="btn">商城</a>
+    </div>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>智启未来教育</h1>
+                    <p>让每个孩子都能享受智能化、个性化的学习体验</p>
+                    <a href="#products" class="btn">了解更多</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="products">
+            <div class="container">
+                <h2 class="section-title">创新产品</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://img2.wallspic.com/previews/6/4/8/8/6/168846/168846-man_de_nu_hai-zi-fei_niaolangley_cang_long-tou_fa-fa_xing-550x310.jpg');"></div>
+                        <div class="product-info">
+                            <h3>智能学习助手</h3>
+                            <p>AI驱动的个性化学习体验</p>
+                            <a href="#" class="btn">了解更多</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://img1.wallspic.com/previews/2/1/6/5/6/165612/165612-kimetsu_no_yaiba-e_mo_sha_shoukimetsu_no_yaiba-tao-tou_fa-wai_tao-550x310.jpg');"></div>
+                        <div class="product-info">
+                            <h3>教育机器人</h3>
+                            <p>寓教于乐的智能陪伴</p>
+                            <a href="#" class="btn">了解更多</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://img3.wallspic.com/previews/0/5/6/4/6/164650/164650-bai_se-qi_guan-ka_tong-kuai_le_de-dian_lan_se_de-550x310.jpg');"></div>
+                        <div class="product-info">
+                            <h3>智慧课堂系统</h3>
+                            <p>打造互动式学习环境</p>
+                            <a href="#" class="btn">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title">核心技术</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3>AI智能识别</h3>
+                        <p>采用先进的人工智能技术，精准识别学习行为，提供个性化建议</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>数据安全</h3>
+                        <p>采用军工级加密技术，确保学习数据安全，隐私得到充分保护</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <h3>实时互动</h3>
+                        <p>支持多方实时互动，营造沉浸式学习氛围，提升学习效果</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="news" class="news">
+            <div class="container">
+                <h2 class="section-title">新闻动态</h2>
+                <div class="news-grid">
+                    <div class="news-card">
+                        <div class="news-image" style="background-image: url('/placeholder.svg?height=300&width=500');"></div>
+                        <div class="news-info">
+                            <div class="news-date">2023-11-17</div>
+                            <h3>习成智伴发布新一代AI教育产品</h3>
+                            <p>全新升级的AI算法，为学生提供更精准的学习建议和个性化辅导...</p>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <div class="news-image" style="background-image: url('/placeholder.svg?height=300&width=500');"></div>
+                        <div class="news-info">
+                            <div class="news-date">2023-11-15</div>
+                            <h3>习成智伴与多所高校达成战略合作</h3>
+                            <p>携手推进教育科技创新，共同培养AI+教育复合型人才...</p>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <div class="news-image" style="background-image: url('/placeholder.svg?height=300&width=500');"></div>
+                        <div class="news-info">
+                            <div class="news-date">2023-11-10</div>
+                            <h3>习成智伴荣获"年度最具创新力教育科技企业"称号</h3>
+                            <p>凭借在AI教育领域的突出贡献，习成智伴获得业界高度认可...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">联系我们</h2>
+                <p>如果您对我们的产品和服务有任何疑问，欢迎随时联系我们</p>
+                <div class="qr-codes">
+                    <div class="qr-code">
+                        <img src="/placeholder.svg?height=150&width=150" alt="微信公众号二维码">
+                        <p>微信公众号</p>
+                    </div>
+                    <div class="qr-code">
+                        <img src="/placeholder.svg?height=150&width=150" alt="客服二维码">
+                        <p>在线客服</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>产品</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">智能学习助手</a></li>
+                        <li><a href="#">教育机器人</a></li>
+                        <li><a href="#">智慧课堂系统</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>解决方案</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">教育机构</a></li>
+                        <li><a href="#">家庭教育</a></li>
+                        <li><a href="#">个性化学习</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>支持</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">下载中心</a></li>
+                        <li><a href="#">售后服务</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>关于</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">公司介绍</a></li>
+                        <li><a href="#">新闻中心</a></li>
+                        <li><a href="#">加入我们</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 习成智伴科技有限公司 版权所有</p>
+                <p>
+                    <a href="#">隐私政策</a> |
+                    <a href="#">服务条款</a> |
+                    <a href="#">法律声明</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 响应式导航菜单
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // 滚动时改变导航栏样式
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 0);
+        });
+
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
