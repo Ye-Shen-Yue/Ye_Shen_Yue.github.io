@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ST 官方网站 - 创新科技的领导者</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-image: url('https://img3.wallspic.com/crops/8/1/1/7/7/177118/177118-dong_hua_pian-lan_guang_guang_pan-tao-dvd-fa_xing-3840x2160.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background-color: rgba(255, 255, 255, 0.9);
+            transition: background-color 0.3s ease;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        header.scrolled {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0066cc;
+        }
+        .nav-links {
+            display: none;
+        }
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            margin-left: 1rem;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #0066cc;
+        }
+        .menu-toggle {
+            display: block;
+            cursor: pointer;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            max-width: 800px;
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #0066cc;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #0052a3;
+        }
+        .featured-products {
+            padding: 4rem 0;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        .featured-products h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: #0066cc;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        .product-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, opacity 0.5s ease;
+            opacity: 0;
+        }
+        .product-card.visible {
+            opacity: 1;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-info {
+            padding: 1.5rem;
+        }
+        .product-info h3 {
+            margin-bottom: 0.5rem;
+            color: #0066cc;
+        }
+        .story {
+            padding: 4rem 0;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        .story-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .story-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .story-text {
+            text-align: center;
+        }
+        .story-text h2 {
+            color: #0066cc;
+            margin-bottom: 1rem;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 3rem 0;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #0066cc;
+        }
+        .footer-section ul {
+            list-style-type: none;
+        }
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-section ul li a:hover {
+            color: #0066cc;
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #555;
+        }
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+            .menu-toggle {
+                display: none;
+            }
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .story-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+                text-align: left;
+            }
+            .story-image {
+                margin-bottom: 0;
+                margin-right: 2rem;
+            }
+            .footer-content {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">ST</div>
+            <div class="nav-links">
+                <a href="#products">产品</a>
+                <a href="#solutions">解决方案</a>
+                <a href="#about">关于我们</a>
+                <a href="#support">支持</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>与ST一起创新未来</h1>
+                <p>我们致力于开发尖端技术，为全球客户提供创新解决方案，共同塑造更美好的明天。</p>
+                <a href="#products" class="btn">探索我们的产品</a>
+            </div>
+        </section>
+
+        <section id="products" class="featured-products">
+            <div class="container">
+                <h2>特色产品</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://img2.wallspic.com/previews/6/4/8/8/6/168846/168846-man_de_nu_hai-zi-fei_niaolangley_cang_long-tou_fa-fa_xing-550x310.jpg" alt="智能家居系统">
+                        <div class="product-info">
+                            <h3>智能家居系统</h3>
+                            <p>打造舒适、安全、节能的智能生活空间。我们的智能家居系统集成了先进的传感器技术和人工智能算法，为您提供全方位的家居控制和自动化体验。</p>
+                            <a href="#" class="btn">了解更多</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://img1.wallspic.com/previews/2/1/6/5/6/165612/165612-kimetsu_no_yaiba-e_mo_sha_shoukimetsu_no_yaiba-tao-tou_fa-wai_tao-550x310.jpg" alt="新一代处理器">
+                        <div class="product-info">
+                            <h3>新一代处理器</h3>
+                            <p>突破性能极限，引领计算革命。我们的新一代处理器采用最先进的纳米技术，在保持低功耗的同时，大幅提升了运算速度和多任务处理能力。</p>
+                            <a href="#" class="btn">了解更多</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://img3.wallspic.com/previews/0/5/6/4/6/164650/164650-bai_se-qi_guan-ka_tong-kuai_le_de-dian_lan_se_de-550x310.jpg" alt="可穿戴健康设备">
+                        <div class="product-info">
+                            <h3>可穿戴健康设备</h3>
+                            <p>24/7全天候健康管理助手。我们的可穿戴设备不仅能够精确监测您的各项生理指标，还能通过大数据分析为您提供个性化的健康建议和预警。</p>
+                            <a href="#" class="btn">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="story">
+            <div class="container">
+                <div class="story-content">
+                    <img src="/placeholder.svg?height=400&width=600" alt="我们的故事" class="story-image">
+                    <div class="story-text">
+                        <h2>我们的故事</h2>
+                        <p>ST公司成立于20年前，由一群充满激情的工程师和创新者组建。我们的使命是通过技术创新来改变世界，为全球客户提供最先进的解决方案，帮助他们应对各种挑战。</p>
+                        <p>多年来，我们不断投资研发，培养了一支世界级的工程师团队。我们的产品已经在各个行业得到广泛应用，从消费电子到工业自动化，从汽车到医疗设备。我们的创新不仅推动了技术的进步，也为人类的生活带来了积极的改变。</p>
+                        <p>展望未来，我们将继续秉持创新精神，致力于开发更智能、更环保、更人性化的产品，为构建一个更美好的世界贡献我们的力量。</p>
+                        <a href="#" class="btn">了解更多关于我们的信息</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>产品</h3>
+                    <ul>
+                        <li><a href="#">智能家居</a></li>
+                        <li><a href="#">处理器</a></li>
+                        <li><a href="#">可穿戴设备</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>解决方案</h3>
+                    <ul>
+                        <li><a href="#">工业自动化</a></li>
+                        <li><a href="#">智慧城市</a></li>
+                        <li><a href="#">医疗科技</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>公司</h3>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">职业机会</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>关注我们</h3>
+                    <ul>
+                        <li><a href="#">微博</a></li>
+                        <li><a href="#">微信</a></li>
+                        <li><a href="#">领英</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ST公司。保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 响应式导航菜单
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            menuToggle.classList.toggle('active');
+        });
+
+        // 滚动时改变导航栏样式
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 0);
+        });
+
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 产品卡片的淡入效果
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function handleScroll() {
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                if (isElementInViewport(card)) {
+                    card.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
+    </script>
+</body>
+</html>
